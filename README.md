@@ -9,16 +9,17 @@ You should also make sure /data/html and /data/metadata is persistent.
 
 ## Web server
 
-This image does not come with a web server, however
-[erlend/reposado-nginx](https://hub.docker.com/r/erlend/reposado-nginx) works
-nicely.
+The `latest` tag only contains reposado and handles running it at the at the
+specified time, the web server should run in a different container. A
+preconfigured nginx image is available at `erlend/reposado:nginx`, but you can
+of course use any web server (just point it to the `/data/html` path).
 
 ## Example
 
 ```
 docker run -d --name=reposado -v /data:/path/to/local/data erlend/reposado
 # Optional web server
-docker run -d --name=reposado-web --volumes-from=reposado erlend/reposado-nginx
+docker run -d --name=reposado-web --volumes-from=reposado erlend/reposado:nginx
 ```
 
 ## Configuration
