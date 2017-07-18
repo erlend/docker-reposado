@@ -9,7 +9,7 @@ chown -R $USER_ID:$GROUP_ID /data
 
 if [ -z "$1" ]; then
   echo "Creating crontab with pattern: $CRON_PATTERN"
-  echo "$CRON_PATTERN repo_sync --log=/data/reposado.log" | crontab -u reposado -
+  echo "$CRON_PATTERN /reposado/code/repo_sync --log=/data/reposado.log" | crontab -u reposado -
 
   set -- crond -fl6L-
 fi
